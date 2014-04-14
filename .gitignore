@@ -1,0 +1,6 @@
+/www/blocks
+/bower_components
+/node_modules
+/.blocks
+/build
+/.idea
