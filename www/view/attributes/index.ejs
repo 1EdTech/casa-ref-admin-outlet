@@ -1,0 +1,22 @@
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Section</th>
+        <th>UUID</th>
+        <th>Handler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(var i in attributes){
+        var attribute = attributes[i]
+    %>
+    <tr>
+        <td><a href="#" data-attribute="<%= JSON.stringify(attribute).replace(/"/g, '&quot;') %>"><%= attribute.name %></a></td>
+        <td><%= attribute.section %></td>
+        <td><%= attribute.uuid %></td>
+        <td><%= attribute.handler %></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>

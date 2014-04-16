@@ -1,0 +1,13 @@
+<form id="put-attribute">
+    <label>
+        Name
+        <input type="text" name="id" value="<%= attribute.name %>" disabled>
+    </label>
+    <label>
+        Data
+        <textarea name="data"><%= JSON.stringify(attribute.options) %></textarea>
+    </label>
+    <input type="submit" value="Update Attribute">
+</form>
+
+<p><em><a href="#" id="destroy-attribute">Reset Payload</a></em></p>
