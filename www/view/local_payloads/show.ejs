@@ -1,0 +1,13 @@
+<form id="put-payload">
+    <label>
+        Identifier
+        <input type="text" name="id" value="<%= app.identity.id %>" disabled>
+    </label>
+    <label>
+        Data
+        <textarea name="data"><%= JSON.stringify(app.attributes) %></textarea>
+    </label>
+    <input type="submit" value="Update Payload">
+</form>
+
+<p><em><a href="#" id="destroy-payload">Delete Payload</a></em></p>

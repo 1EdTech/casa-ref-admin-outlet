@@ -33,7 +33,7 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
     block 'controllers', :path => 'controller' do
       dependency app.route 'core'
       js_file 'attributes.js'
-      js_file 'payloads.js'
+      js_file 'local_payloads.js'
       js_file 'settings.js'
     end
   end
@@ -48,13 +48,23 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
       dependency engine.route 'core'
       js_file 'attributes.js'
     end
-    block 'payloads' do
+    block 'local_payloads' do
       dependency engine.route 'core'
-      js_file 'payloads.js'
+      dependency engine.route 'search', 'driver', 'elasticsearch'
+      js_file 'local_payloads.js'
     end
     block 'settings' do
       dependency engine.route 'core'
       js_file 'settings.js'
+    end
+    block 'search', :path => 'search' do
+      dependency engine.route 'core'
+      block('base'){ js_file 'base.js' }
+      block 'driver' do
+        dependency engine.route 'search', 'base'
+        block('elasticsearch'){ js_file 'elasticsearch.js' }
+        block('query'){ js_file 'query.js' }
+      end
     end
   end
 

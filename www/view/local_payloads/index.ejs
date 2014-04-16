@@ -1,0 +1,37 @@
+<form id="put-payload">
+    <label>
+        Identifier
+        <input type="text" name="id">
+    </label>
+    <label>
+        Data
+        <textarea name="data"></textarea>
+    </label>
+    <input type="submit" value="Save Payload">
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Identifier</th>
+        <th>Title</th>
+        <th>URI</th>
+        <th>Share</th>
+        <th>Propagate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(var i in apps){
+        var app = apps[i],
+            attributes = $.extend({}, app.attributes, app.attributes.use, app.attributes.require)
+    %>
+    <tr>
+        <td><a href="#" data-app="<%= JSON.stringify(app).replace(/"/g, '&quot;') %>"><%= app.identity.id %></a></td>
+        <td><%= attributes.title ? attributes.title : '-' %></td>
+        <td><%= attributes.uri %></td>
+        <td><%= attributes.share ? 'Yes' : 'No' %></td>
+        <td><%= attributes.propagate ? 'Yes' : 'No' %></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>
