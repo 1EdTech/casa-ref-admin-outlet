@@ -1,0 +1,27 @@
+$form-horizontal-offset:                    180px !default;
+
+$form-legend-border-color:                  #999 !default;
+$form-legend-color:                         #333 !default;
+$form-legend-small-color:                   #666 !default;
+
+$form-input-font-size:                      1em !default;
+$form-legend-font-size:                     1.5em !default;
+
+$form-input-size-mini:                      60px !default;
+$form-input-size-small:                     90px !default;
+$form-input-size:                           210px !default;
+$form-input-size-large:                     300px !default;
+$form-input-background-color:               #fff !default;
+$form-input-text-color:                     #333 !default;
+$form-input-border-radius:                  4px !default;
+$form-input-border-color:                   #999 !default;
+$form-input-padding:                        4px 6px !default;
+
+$form-input-uneditable-text-color:          #666 !default;
+$form-input-uneditable-background-color:    $form-input-background-color !default;
+$form-input-uneditable-border-color:        #666 !default;
+
+$form-placeholder-text-color:               #666 !default;
+
+$form-input-boxshadow:                      inset 0 1px 1px rgba(0,0,0,.075) !default;
+$form-input-boxshadow-focus:                #{inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)} !default;

@@ -5,6 +5,7 @@ set :build_path, 'www/blocks'
 # Application Includes
 
 include 'casa-admin-outlet', 'app', 'controllers'
+include 'casa-admin-outlet', 'app', 'view'
 
 # Application Block Definition
 
@@ -15,9 +16,26 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
     block('engine'){ js_file 'engine.js' }
   end
 
+  block 'component', :path => 'component' do |component|
+    block 'settings', :path => 'settings' do
+      block('button') { scss_file 'button.scss' }
+      block('form') { scss_file 'form.scss' }
+    end
+    block 'form' do
+      dependency component.route 'settings', 'button'
+      scss_file 'button.scss'
+    end
+    block 'form' do
+      dependency framework.route 'WebBlocks-breakpoints'
+      dependency component.route 'settings', 'form'
+      scss_file 'form.scss'
+    end
+  end
+
   block 'core' do
     js_file 'core.js'
     scss_file 'core.scss'
+    dependency framework.route 'normalize-css'
   end
 
   block 'app', :path => 'app' do |app|
@@ -35,6 +53,11 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
       js_file 'attributes.js'
       js_file 'local_payloads.js'
       js_file 'settings.js'
+    end
+    block 'view', :path => 'view' do
+      dependency app.route 'core'
+      dependency outlet.route 'component', 'form'
+      scss_file 'common.scss'
     end
   end
 

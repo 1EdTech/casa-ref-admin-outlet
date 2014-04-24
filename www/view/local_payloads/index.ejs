@@ -1,13 +1,14 @@
-<form id="put-payload">
-    <label>
-        Identifier
+<form id="put-payload" class="form horizontal">
+    <div class="control">
+        <label id="id">Identifier</label>
         <input type="text" name="id">
-    </label>
-    <label>
-        Data
+    </div>
+    <div id="data-generators"></div>
+    <div class="control" id="data-definition">
+        <label id="data">Data</label>
         <textarea name="data"></textarea>
-    </label>
-    <input type="submit" value="Save Payload">
+    </div>
+    <input type="submit" value="Save Payload" class="button">
 </form>
 
 <table>

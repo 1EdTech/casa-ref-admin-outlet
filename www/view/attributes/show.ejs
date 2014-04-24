@@ -1,13 +1,14 @@
-<form id="put-attribute">
-    <label>
-        Name
+<form id="put-attribute" class="form horizontal">
+    <div class="control">
+        <label>Name</label>
         <input type="text" name="id" value="<%= attribute.name %>" disabled>
-    </label>
-    <label>
-        Data
-        <textarea name="data"><%= JSON.stringify(attribute.options) %></textarea>
-    </label>
-    <input type="submit" value="Update Attribute">
+    </div>
+    <div id="data-generators"></div>
+    <div class="control" id="data-definition">
+        <label id="data">Data</label>
+        <textarea name="data" id="data"><%= JSON.stringify(attribute.options) %></textarea>
+    </div>
+    <input type="submit" value="Update Attribute" class="button">
 </form>
 
 <p><em><a href="#" id="destroy-attribute">Reset Payload</a></em></p>

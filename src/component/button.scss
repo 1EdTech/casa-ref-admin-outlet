@@ -1,0 +1,72 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/transition";
+@import "compass/css3/box-shadow";
+@import "compass/css3/images";
+
+.button {
+
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(#fff,#eee));
+
+  font-size: $button-font-size-default;
+  display: inline-block;
+  padding: 1em*$button-padding-multiplier-default-vertical 1em*$button-padding-multiplier-default-horizontal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: $button-cursor;
+  border-style: solid;
+  border-width: 1px;
+  @include border-radius($button-border-radius-multiplier-default*1em);
+
+  text-decoration: none;
+
+  /* IE7 hack for inline block */
+  *display: inline;
+  *zoom: 1;
+
+  /* IE7 hack to prevent fix spacing on inline block */
+  *margin-left: .3em;
+  &:first-child {
+    *margin-left: 0;
+  }
+
+  /* IE7 hack to prevent black border on input:focus */
+  *border: 0;
+
+  /* WebKit hack to override -webkit-small */
+  font: inherit;
+
+  &:hover {
+    text-decoration: none;
+    @include transition(background .1s linear);
+    @include box-shadow($button-boxshadow-hover);
+    @include background-image(linear-gradient(#f4f4f4,#f6f6f6));
+  }
+
+  &:focus {
+    // Default
+    outline: thin dotted #333;
+    // Webkit
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+
+  .mini {
+    padding: $button-font-size-mini*$button-padding-multiplier-mini-vertical $button-font-size-mini*$button-padding-multiplier-mini-horizontal;
+    font-size: $button-font-size-mini;
+    @include border-radius($button-border-radius-multiplier-mini*1em);
+  }
+
+  .small {
+    padding: $button-font-size-small*$button-padding-multiplier-small-vertical $button-font-size-small*$button-padding-multiplier-small-horizontal;
+    font-size: $button-font-size-small;
+    @include border-radius($button-border-radius-multiplier-small*1em);
+  }
+
+  .large {
+    padding: $button-font-size-large*$button-padding-multiplier-large-vertical $button-font-size-large*$button-padding-multiplier-large-horizontal;
+    font-size: $button-font-size-large;
+    @include border-radius($button-border-radius-multiplier-large*1em);
+  }
+
+}
