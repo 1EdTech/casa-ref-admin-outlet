@@ -6,6 +6,10 @@ set :build_path, 'www/blocks'
 
 include 'casa-admin-outlet', 'app', 'controllers'
 include 'casa-admin-outlet', 'app', 'view'
+include 'casa-admin-outlet', 'attribute', 'categories'
+include 'casa-admin-outlet', 'attribute', 'description'
+include 'casa-admin-outlet', 'attribute', 'title'
+include 'casa-admin-outlet', 'attribute', 'tags'
 
 # Application Block Definition
 
@@ -36,6 +40,46 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
     js_file 'core.js'
     scss_file 'core.scss'
     dependency framework.route 'normalize-css'
+  end
+
+  block 'attribute', :path => 'attribute' do |attribute|
+    block 'core' do
+      js_file 'core.js'
+    end
+    block 'abstract', :path => 'abstract' do |abstract|
+      block 'core' do
+        dependency attribute.route 'core'
+        js_file 'core.js'
+      end
+      block 'string' do
+        dependency abstract.route 'core'
+        js_file 'string.js'
+      end
+      block 'string_set' do
+        dependency abstract.route 'core'
+        js_file 'string_set.js'
+      end
+      block 'text' do
+        dependency abstract.route 'core'
+        js_file 'text.js'
+      end
+    end
+    block 'categories' do
+      dependency attribute.route 'abstract', 'string_set'
+      js_file 'categories.js'
+    end
+    block 'description' do
+      dependency attribute.route 'abstract', 'text'
+      js_file 'description.js'
+    end
+    block 'tags' do
+      dependency attribute.route 'abstract', 'string_set'
+      js_file 'tags.js'
+    end
+    block 'title' do
+      dependency attribute.route 'abstract', 'string'
+      js_file 'title.js'
+    end
   end
 
   block 'app', :path => 'app' do |app|

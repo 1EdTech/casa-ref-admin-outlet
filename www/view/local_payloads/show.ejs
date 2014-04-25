@@ -1,12 +1,13 @@
 <form id="put-payload" class="form horizontal">
     <div class="control">
-        <label id="id">Identifier</label>
-        <input type="text" name="id" value="<%= app.identity.id %>" disabled>
+        <label for="i-id">Identifier</label>
+        <input type="text" name="id" id="i-id" value="<%= app.identity.id %>" disabled>
     </div>
+    <!-- TODO: add URI, share and propagate control -->
     <div id="data-generators"></div>
     <div class="control" id="data-definition">
-        <label id="data">Data</label>
-        <textarea name="data"><%= JSON.stringify(app.attributes) %></textarea>
+        <label for="i-data-definition">Data</label>
+        <textarea name="data" id="i-data-definition"><%= JSON.stringify(app.attributes) %></textarea>
     </div>
     <input type="submit" value="Update Payload" class="button">
 </form>

@@ -8,6 +8,8 @@ App.Controller.LocalPayloads = {
 
         App.Page.render('local_payloads/index', {apps: apps});
 
+        App.Controller.LocalPayloads._initDataGenerators();
+
         $('a[data-app]').click(function(e){
           e.preventDefault();
           App.Controller.LocalPayloads.show(JSON.parse($(this).attr('data-app')));
@@ -30,6 +32,8 @@ App.Controller.LocalPayloads = {
   show: function(app){
 
     App.Page.render('local_payloads/show', {app: app});
+
+    App.Controller.LocalPayloads._initDataGenerators();
 
     $('#put-payload').submit(function(e){
       e.preventDefault();
@@ -74,6 +78,48 @@ App.Controller.LocalPayloads = {
         console.error(errorThrown)
       }
     });
+
+  },
+
+  _initDataGenerators: function(){
+
+    Engine.Attributes.all({
+
+      success: function(attributes){
+
+        var $generators = $('#data-generators'),
+            $definition = $('#data-definition'),
+            data = {'use':{},'require':{}}
+
+        $('[name="uri"]').change(function(){data['uri'] = $(this).val()});
+        $('[name="share"]').change(function(){data['share'] = $(this).prop('checked')}).change();
+        $('[name="share"]').change(function(){data['propagate'] = $(this).prop('checked')}).change();
+
+        $.each(attributes, function(_, attribute){
+          var attributeName = attribute.name.charAt(0).toUpperCase() + attribute.name.slice(1),
+              controller = null;
+
+          try {
+            controller = Attribute[attributeName].Controller.LocalPayloads.Generator
+          }catch(e){}
+
+          if(controller){
+            controller.render()
+                      .appendTo($generators)
+                      .change(function(){
+                        data[attribute.section][attribute.name] = controller.get();
+                        console.log(data)
+                        $definition.find('textarea').val(JSON.stringify(data));
+                      })
+          }
+
+        })
+
+        $definition.hide();
+
+      }
+
+    })
 
   }
 

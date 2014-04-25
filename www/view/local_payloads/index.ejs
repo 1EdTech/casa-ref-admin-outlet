@@ -1,12 +1,24 @@
 <form id="put-payload" class="form horizontal">
     <div class="control">
-        <label id="id">Identifier</label>
-        <input type="text" name="id">
+        <label for="i-id">Identifier</label>
+        <input type="text" name="id" id="i-id">
+    </div>
+    <div class="control">
+        <label for="i-uri">URI</label>
+        <input type="text" name="uri" id="i-uri">
+    </div>
+    <div class="control">
+        <label for="i-share">Share</label>
+        <input type="checkbox" name="share" id="i-share" checked>
+    </div>
+    <div class="control">
+        <label for="i-propagate">Propagate</label>
+        <input type="checkbox" name="propagate" id="i-propagate" checked>
     </div>
     <div id="data-generators"></div>
     <div class="control" id="data-definition">
-        <label id="data">Data</label>
-        <textarea name="data"></textarea>
+        <label for="i-data-definition">Data</label>
+        <textarea name="data" id="i-data-definition"></textarea>
     </div>
     <input type="submit" value="Save Payload" class="button">
 </form>
