@@ -33,7 +33,7 @@ App.Controller.LocalPayloads = {
 
     App.Page.render('local_payloads/show', {app: app});
 
-    App.Controller.LocalPayloads._initDataGenerators();
+    App.Controller.LocalPayloads._initDataGenerators(app);
 
     $('#put-payload').submit(function(e){
       e.preventDefault();
@@ -81,7 +81,7 @@ App.Controller.LocalPayloads = {
 
   },
 
-  _initDataGenerators: function(){
+  _initDataGenerators: function(app){
 
     Engine.Attributes.all({
 
@@ -91,26 +91,31 @@ App.Controller.LocalPayloads = {
             $definition = $('#data-definition'),
             data = {'use':{},'require':{}}
 
-        $('[name="uri"]').change(function(){data['uri'] = $(this).val()});
+        $('[name="uri"]').change(function(){data['uri'] = $(this).val()}).change();
         $('[name="share"]').change(function(){data['share'] = $(this).prop('checked')}).change();
-        $('[name="share"]').change(function(){data['propagate'] = $(this).prop('checked')}).change();
+        $('[name="propagate"]').change(function(){data['propagate'] = $(this).prop('checked')}).change();
 
         $.each(attributes, function(_, attribute){
           var attributeName = attribute.name.charAt(0).toUpperCase() + attribute.name.slice(1),
-              controller = null;
+              controller = null,
+              attributeValue = null;
 
           try {
             controller = Attribute[attributeName].Controller.LocalPayloads.Generator
           }catch(e){}
 
+          try {
+            attributeValue = app.attributes[attribute.section][attribute.name]
+          }catch(e){}
+
           if(controller){
-            controller.render()
+            controller.render(attributeValue)
                       .appendTo($generators)
                       .change(function(){
                         data[attribute.section][attribute.name] = controller.get();
-                        console.log(data)
                         $definition.find('textarea').val(JSON.stringify(data));
                       })
+                      .change()
           }
 
         })

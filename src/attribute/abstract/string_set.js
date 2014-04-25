@@ -1,15 +1,22 @@
 Attribute.Abstract.Controller.LocalPayloads.Generator.StringSet = function(name, label){
   return {
-    render: function(){
+    render: function(currentValue){
       var $ele = $(document.createElement('div'))
           .addClass('control')
           .attr('id', 'categories-control')
           .html('<label for="attr-'+name+'">'+label+'</label>'),
-        makeInput = function(){
+        makeInput = function(value){
           return $(document.createElement('input'))
             .attr('type','text')
-            .attr('class','attr-'+name).appendTo($ele)
+            .attr('class','attr-'+name)
+            .val(value)
+            .appendTo($ele)
         }
+
+      if(currentValue)
+        $.each(currentValue, function(_, value){
+          makeInput(value)
+        })
 
       makeInput();
 
@@ -30,7 +37,10 @@ Attribute.Abstract.Controller.LocalPayloads.Generator.StringSet = function(name,
       }).get();
     },
     change: function(func){
-      $('#categories-control').delegate('input').change(func)
+      if(func)
+        $('#categories-control').delegate('input').change(func)
+      else
+        $('#categories-control input').change()
     }
   };
 }

@@ -1,9 +1,9 @@
 Attribute.Abstract.Controller.LocalPayloads.Generator.Text = function(name, label){
   return {
-    render: function(){
+    render: function(currentValue){
       return $(document.createElement('div'))
         .addClass('control')
-        .html('<label for="attr-'+name+'">'+label+'</label><textarea id="attr-'+name+'" style="width:95%;height:72px;"></textarea>')
+        .html('<label for="attr-'+name+'">'+label+'</label><textarea id="attr-'+name+'" style="width:95%;height:72px;">'+(currentValue ? currentValue : '')+'</textarea>')
     },
     get: function(){
       return $('#attr-'+name).val();

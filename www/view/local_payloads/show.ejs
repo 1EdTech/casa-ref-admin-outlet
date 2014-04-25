@@ -3,7 +3,18 @@
         <label for="i-id">Identifier</label>
         <input type="text" name="id" id="i-id" value="<%= app.identity.id %>" disabled>
     </div>
-    <!-- TODO: add URI, share and propagate control -->
+    <div class="control">
+        <label for="i-uri">URI</label>
+        <input type="text" name="uri" id="i-uri" value="<%= app.attributes.uri %>">
+    </div>
+    <div class="control">
+        <label for="i-share">Share</label>
+        <input type="checkbox" name="share" id="i-share"<%= app.attributes.share ? ' checked' : ''%>>
+    </div>
+    <div class="control">
+        <label for="i-propagate">Propagate</label>
+        <input type="checkbox" name="propagate" id="i-propagate"<%= app.attributes.propagate ? ' checked' : ''%>>
+    </div>
     <div id="data-generators"></div>
     <div class="control" id="data-definition">
         <label for="i-data-definition">Data</label>
