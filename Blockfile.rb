@@ -6,8 +6,11 @@ set :build_path, 'www/blocks'
 
 include 'casa-admin-outlet', 'app', 'controllers'
 include 'casa-admin-outlet', 'app', 'view'
+include 'casa-admin-outlet', 'attribute', 'author'
 include 'casa-admin-outlet', 'attribute', 'categories'
 include 'casa-admin-outlet', 'attribute', 'description'
+include 'casa-admin-outlet', 'attribute', 'explicit'
+include 'casa-admin-outlet', 'attribute', 'organization'
 include 'casa-admin-outlet', 'attribute', 'title'
 include 'casa-admin-outlet', 'attribute', 'tags'
 
@@ -51,6 +54,10 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
         dependency attribute.route 'core'
         js_file 'core.js'
       end
+      block 'boolean' do
+        dependency abstract.route 'core'
+        js_file 'boolean.js'
+      end
       block 'string' do
         dependency abstract.route 'core'
         js_file 'string.js'
@@ -64,6 +71,10 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
         js_file 'text.js'
       end
     end
+    block 'author' do
+      dependency attribute.route 'abstract', 'core'
+      js_file 'author.js'
+    end
     block 'categories' do
       dependency attribute.route 'abstract', 'string_set'
       js_file 'categories.js'
@@ -71,6 +82,14 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
     block 'description' do
       dependency attribute.route 'abstract', 'text'
       js_file 'description.js'
+    end
+    block 'explicit' do
+      dependency attribute.route 'abstract', 'boolean'
+      js_file 'explicit.js'
+    end
+    block 'organization' do
+      dependency attribute.route 'abstract', 'core'
+      js_file 'organization.js'
     end
     block 'tags' do
       dependency attribute.route 'abstract', 'string_set'
