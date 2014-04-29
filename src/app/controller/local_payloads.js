@@ -100,11 +100,25 @@ App.Controller.LocalPayloads = {
 
         var $generators = $('#data-generators'),
             $definition = $('#data-definition'),
-            data = {'use':{},'require':{}}
+            data = {'use':{},'require':{}},
+            flush = function(data){
+              $definition.find('textarea').val(JSON.stringify(data));
+            }
 
-        $('[name="uri"]').change(function(){data['uri'] = $(this).val()}).change();
-        $('[name="share"]').change(function(){data['share'] = $(this).prop('checked')}).change();
-        $('[name="propagate"]').change(function(){data['propagate'] = $(this).prop('checked')}).change();
+        $('[name="uri"]').change(function(){
+          data['uri'] = $(this).val();
+          flush(data);
+        }).change();
+
+        $('[name="share"]').change(function(){
+          data['share'] = $(this).prop('checked');
+          flush(data);
+        }).change();
+
+        $('[name="propagate"]').change(function(){
+          data['propagate'] = $(this).prop('checked');
+          flush(data);
+        }).change();
 
         $.each(attributes, function(_, attribute){
           var attributeName = attribute.name.charAt(0).toUpperCase() + attribute.name.slice(1),
@@ -124,7 +138,7 @@ App.Controller.LocalPayloads = {
                       .appendTo($generators)
                       .change(function(){
                         data[attribute.section][attribute.name] = controller.get();
-                        $definition.find('textarea').val(JSON.stringify(data));
+                        flush(data);
                       })
                       .change()
           }
