@@ -70,3 +70,9 @@ figure {
 .float-right {
   float: right;
 }
+
+.not-authenticated .require-authenticated {
+  &, &.navbar-collapse.collapse {
+    display: none !important;
+  }
+}

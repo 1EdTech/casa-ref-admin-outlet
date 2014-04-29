@@ -117,6 +117,7 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
       dependency outlet.route 'config', 'app'
       dependency framework.route 'efx', 'driver'
       dependency framework.route 'ejs_production'
+      dependency framework.route 'stash'
       js_file 'core.js'
       scss_file 'core.scss'
     end
@@ -125,6 +126,7 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
       dependency framework.route 'DataTables'
       dependency framework.route 'bootstrap', 'js', 'modal'
       js_file 'attributes.js'
+      js_file 'auth.js'
       js_file 'local_payloads.js'
       js_file 'settings.js'
     end
@@ -189,6 +191,10 @@ end
 block 'DataTables', :path => 'bower_components/DataTables/media' do
   js_file 'js/jquery.dataTables.js'
   scss_file 'css/jquery.dataTables.css'
+end
+
+block 'stash', :path => 'bower_components/stash' do
+  js_file 'index.js'
 end
 
 block 'bootstrap', :path => 'bower_components/bootstrap-sass/vendor/assets' do |bootstrap|
