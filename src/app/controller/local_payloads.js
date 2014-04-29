@@ -21,6 +21,7 @@ App.Controller.LocalPayloads = {
         $('#put-payload').submit(function(e){
           e.preventDefault();
           $('#myModal').modal('hide');
+          $('.modal-backdrop.in').removeClass('in').addClass('out');
           App.Controller.LocalPayloads.store(
             $(this).find('[name="id"]').val(),
             JSON.parse($(this).find('[name="data"]').val())

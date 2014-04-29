@@ -1,1 +1,26 @@
-<%= JSON.stringify(settings) %>
+<h2 style="margin-top:0">Settings</h2>
+
+<h4>Modules</h4>
+
+<ul>
+<% for(var key in settings.modules){%>
+    <li><%= settings.modules[key] %></li>
+<% } %>
+</ul>
+
+<h4>Database</h4>
+
+<ul>
+    <li><strong>Adapter</strong>: <%= settings.database.adapter %></li>
+    <li><strong>Hostname</strong>: <%= settings.database.host %></li>
+    <li><strong>Username</strong>: <%= settings.database.user %></li>
+    <li><strong>Database</strong>: <%= settings.database.database %></li>
+</ul>
+
+<h4>Attributes</h4>
+
+<ul>
+    <% for(var key in settings.attributes){ var attribute = settings.attributes[key]; %>
+    <li><strong><%= attribute.name %></strong>: <%= attribute.uuid %> [<%= attribute.handler %>]</li>
+    <% } %>
+</ul>

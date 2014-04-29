@@ -2,8 +2,6 @@ var App = {
 
   start: function(){
 
-    App.Auth.init();
-
     $('[data-controller]').each(function(){
       var $this = $(this),
           controller = $(this).attr('data-controller'),
@@ -51,6 +49,11 @@ var App = {
       }else if(options.error){
         options.error();
       }
+    },
+
+    logout: function(){
+      App.Auth.credentials = null;
+      stash.cut('credentials')
     }
   },
 

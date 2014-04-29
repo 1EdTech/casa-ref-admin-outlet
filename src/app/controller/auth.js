@@ -18,7 +18,7 @@ App.Controller.Auth = {
 
   logout: function(){
 
-    App.Auth.credentials = null;
+    App.Auth.logout();
     App.Controller.Auth.login();
 
   }
