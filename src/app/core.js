@@ -63,7 +63,6 @@ var App = {
           action = $(this).attr('data-action') ? $(this).attr('data-action') : 'index';
         $this.click(function(e){
           e.preventDefault();
-          console.log(controller, action);
           App.Controller[controller][action]();
         })
       });
