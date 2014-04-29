@@ -6,9 +6,9 @@
     <div id="data-generators"></div>
     <div class="control" id="data-definition">
         <label for="i-data-definition">Data</label>
-        <textarea name="data" id="i-data-definition"><%= JSON.stringify(attribute.options) %></textarea>
+        <textarea name="data" id="i-data-definition" style="width:100%;height:72px;"><%= JSON.stringify(attribute.options) %></textarea>
     </div>
-    <input type="submit" value="Update Attribute" class="button">
+    <input type="submit" value="Update Attribute" class="btn btn-primary">
+    <button id="destroy-attribute" class="btn btn-danger">Reset Attribute</button>
+    <button data-controller="Attributes" class="btn btn-default">Cancel</button>
 </form>
-
-<p><em><a href="#" id="destroy-attribute">Reset Payload</a></em></p>
