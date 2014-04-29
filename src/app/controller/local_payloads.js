@@ -1,12 +1,12 @@
 App.Controller.LocalPayloads = {
 
-  index: function(){
+  index: function(options){
 
     Engine.LocalPayloads.all({
 
       success: function(apps){
 
-        App.Page.render('local_payloads/index', {apps: apps});
+        App.Page.render('local_payloads/index', {apps: apps, options: options});
 
         App.Controller.LocalPayloads._initDataGenerators();
 
@@ -61,7 +61,10 @@ App.Controller.LocalPayloads = {
       "id": id,
       "data": data,
       "success": function(data, textStatus, jqXHR){
-        App.Controller.LocalPayloads.index();
+        App.Controller.LocalPayloads.index({
+          message: 'Update has been queued. Your changes will be available shortly. (<a href="#!" data-controller="LocalPayloads">Refresh</a>)',
+          messageType: 'success'
+        });
       },
       "error": function(jqXHR, textStatus, errorThrown){
         console.error(textStatus)
@@ -76,7 +79,10 @@ App.Controller.LocalPayloads = {
     Engine.LocalPayloads.destroy({
       "id": id,
       "success": function(data, textStatus, jqXHR){
-        App.Controller.LocalPayloads.index();
+        App.Controller.LocalPayloads.index({
+          message: 'Delete has been queued. Your changes will be available shortly. (<a href="#!" data-controller="LocalPayloads">Refresh</a>)',
+          messageType: 'success'
+        });
       },
       "error": function(jqXHR, textStatus, errorThrown){
         console.error(textStatus)

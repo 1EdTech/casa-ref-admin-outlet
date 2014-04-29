@@ -2,16 +2,7 @@ var App = {
 
   start: function(){
 
-    $('[data-controller]').each(function(){
-      var $this = $(this),
-          controller = $(this).attr('data-controller'),
-          action = $(this).attr('data-action') ? $(this).attr('data-action') : 'index';
-      $this.click(function(e){
-        e.preventDefault();
-        console.log(controller, action);
-        App.Controller[controller][action]();
-      })
-    });
+    App.Router.init();
 
     $('.navbar-collapse a').click(function(){
       $(this).closest('.navbar').find('.navbar-toggle').click();
@@ -61,10 +52,32 @@ var App = {
 
   },
 
+  Router: {
+    init: function(selector){
+      if(!selector){
+        selector = 'body'
+      }
+      $(selector).find('[data-controller]').each(function(){
+        var $this = $(this),
+          controller = $(this).attr('data-controller'),
+          action = $(this).attr('data-action') ? $(this).attr('data-action') : 'index';
+        $this.click(function(e){
+          e.preventDefault();
+          console.log(controller, action);
+          App.Controller[controller][action]();
+        })
+      });
+    }
+  },
+
   Page: {
 
     render: function(name, data){
-      $('main').html(App.View.make(name, data));
+
+      var $main = $('main');
+      $main.html(App.View.make(name, data));
+      App.Router.init($main)
+
     }
 
   },

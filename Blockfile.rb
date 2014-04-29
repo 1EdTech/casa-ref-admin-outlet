@@ -135,6 +135,7 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
       dependency outlet.route 'component', 'form'
       dependency framework.route 'bootstrap', 'form'
       dependency framework.route 'bootstrap', 'buttons'
+      dependency framework.route 'bootstrap', 'alerts'
       dependency framework.route 'bootstrap', 'grid'
       scss_file 'common.scss'
     end
