@@ -6,6 +6,9 @@ set :build_path, 'www/blocks'
 
 include 'casa-admin-outlet', 'app', 'controllers'
 include 'casa-admin-outlet', 'app', 'view'
+
+# Attribute Includes
+
 include 'casa-admin-outlet', 'attribute', 'author'
 include 'casa-admin-outlet', 'attribute', 'categories'
 include 'casa-admin-outlet', 'attribute', 'description'
@@ -13,6 +16,12 @@ include 'casa-admin-outlet', 'attribute', 'explicit'
 include 'casa-admin-outlet', 'attribute', 'organization'
 include 'casa-admin-outlet', 'attribute', 'title'
 include 'casa-admin-outlet', 'attribute', 'tags'
+
+# Style Includes
+
+include 'bootstrap', 'type'
+include 'bootstrap', 'utilities'
+include 'bootstrap', 'navbar'
 
 # Application Block Definition
 
@@ -113,6 +122,8 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
     end
     block 'controllers', :path => 'controller' do
       dependency app.route 'core'
+      dependency framework.route 'DataTables'
+      dependency framework.route 'bootstrap', 'js', 'modal'
       js_file 'attributes.js'
       js_file 'local_payloads.js'
       js_file 'settings.js'
@@ -120,6 +131,9 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
     block 'view', :path => 'view' do
       dependency app.route 'core'
       dependency outlet.route 'component', 'form'
+      dependency framework.route 'bootstrap', 'form'
+      dependency framework.route 'bootstrap', 'buttons'
+      dependency framework.route 'bootstrap', 'grid'
       scss_file 'common.scss'
     end
   end
@@ -156,6 +170,12 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
 
 end
 
+# Existing Block Modifications
+
+block 'efx' do
+  dependency framework.route 'jquery'
+end
+
 # Additional Block Definitions
 
 block 'ejs_production', :path => 'bower_components/ejs_production' do
@@ -166,8 +186,126 @@ block 'normalize-css', :path => 'bower_components/normalize-css' do
   scss_file 'normalize.css'
 end
 
-# Existing Block Modifications
+block 'DataTables', :path => 'bower_components/DataTables/media' do
+  js_file 'js/jquery.dataTables.js'
+  scss_file 'css/jquery.dataTables.css'
+end
 
-block 'efx' do
-  dependency framework.route 'jquery'
+block 'bootstrap', :path => 'bower_components/bootstrap-sass/vendor/assets' do |bootstrap|
+
+  block 'variables' do
+    scss_file 'stylesheets/bootstrap/_variables.scss'
+  end
+
+  block 'base' do
+    dependency bootstrap.route 'variables'
+    scss_file 'stylesheets/bootstrap/_mixins.scss'
+    scss_file 'stylesheets/bootstrap/_normalize.scss'
+    scss_file 'stylesheets/bootstrap/_print.scss'
+    scss_file 'stylesheets/bootstrap/_scaffolding.scss'
+  end
+
+  [
+      'type',
+      'code',
+      'grid',
+      'tables',
+      'forms',
+      'buttons',
+      'component-animations',
+      'glyphicons',
+      'dropdowns',
+      'button-groups',
+      'input-groups',
+      'navs',
+      'navbar',
+      'breadcrumbs',
+      'pagination',
+      'pager',
+      'labels',
+      'badges',
+      'jumbotron',
+      'thumbnails',
+      'alerts',
+      'progress-bars',
+      'media',
+      'list-group',
+      'panels',
+      'wells',
+      'close',
+      'utilities',
+      'responsive-utilities'
+  ].each do |name|
+    block name do
+      dependency bootstrap.route 'base'
+      scss_file "stylesheets/bootstrap/_#{name}.scss"
+    end
+  end
+
+  block 'navbar' do
+    dependency bootstrap.route 'js', 'collapse'
+    dependency bootstrap.route 'forms'
+    dependency bootstrap.route 'navs'
+  end
+
+  block 'js' do |js|
+
+    dependency bootstrap.route 'component-animations'
+
+    block 'affix' do
+      js_file 'javascripts/bootstrap/affix.js'
+    end
+
+    block 'alert' do
+      js_file 'javascripts/bootstrap/alert.js'
+    end
+
+    block 'button' do
+      js_file 'javascripts/bootstrap/button.js'
+    end
+
+    block 'carousel' do
+      js_file 'javascripts/bootstrap/carousel.js'
+      scss_file 'stylesheets/bootstrap/_carousel.scss'
+    end
+
+    block 'collapse' do
+      dependency js.route 'transition'
+      js_file 'javascripts/bootstrap/collapse.js'
+    end
+
+    block 'dropdown' do
+      js_file 'javascripts/bootstrap/dropdown.js'
+    end
+
+    block 'modal' do
+      js_file 'javascripts/bootstrap/modal.js'
+      scss_file 'stylesheets/bootstrap/_modals.scss'
+    end
+
+    block 'popover' do
+      dependency js.route 'tooltip'
+      js_file 'javascripts/bootstrap/popover.js'
+      scss_file 'stylesheets/bootstrap/_popovers.scss'
+    end
+
+    block 'scrollspy' do
+      js_file 'javascripts/bootstrap/scrollspy.js'
+    end
+
+    block 'tab' do
+      js_file 'javascripts/bootstrap/tab.js'
+    end
+
+    block 'tooltip' do
+      js_file 'javascripts/bootstrap/tooltip.js'
+      scss_file 'stylesheets/bootstrap/_tooltip.scss'
+    end
+
+    block 'transition' do
+      js_file 'javascripts/bootstrap/transition.js'
+    end
+
+  end
+
 end

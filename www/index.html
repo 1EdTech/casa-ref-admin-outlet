@@ -11,23 +11,36 @@
 
 <body>
 
-<header>
-    <h1><a href=".">CASA Admin</a></h1>
-</header>
-
-<nav>
-    <ul>
-        <li><a href="#" data-controller="Settings">Settings</a></li>
-        <li><a href="#" data-controller="Attributes">Attributes</a></li>
-        <li><a href="#" data-controller="LocalPayloads">Payloads</a></li>
-    </ul>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <header class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=".">CASA Admin</a>
+        </header>
+        <div class="collapse navbar-collapse" id="primary-nav">
+            <ul class="nav navbar-nav">
+                <li><a href="#" data-controller="Settings" style="padding-top:17px;padding-bottom:13px;">Settings</a></li>
+                <li><a href="#" data-controller="Attributes" style="padding-top:17px;padding-bottom:13px;">Attributes</a></li>
+                <li><a href="#" data-controller="LocalPayloads" style="padding-top:17px;padding-bottom:13px;">Payloads</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<main>
-</main>
+<div class="container">
 
-<footer>
-</footer>
+    <main>
+    </main>
+
+    <footer>
+    </footer>
+
+</div>
 
 <script type="text/javascript">
 App.start();

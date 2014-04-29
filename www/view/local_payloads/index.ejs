@@ -1,29 +1,44 @@
-<form id="put-payload" class="form horizontal">
-    <div class="control">
-        <label for="i-id">Identifier</label>
-        <input type="text" name="id" id="i-id">
-    </div>
-    <div class="control">
-        <label for="i-uri">URI</label>
-        <input type="text" name="uri" id="i-uri">
-    </div>
-    <div class="control">
-        <label for="i-share">Share</label>
-        <input type="checkbox" name="share" id="i-share" checked>
-    </div>
-    <div class="control">
-        <label for="i-propagate">Propagate</label>
-        <input type="checkbox" name="propagate" id="i-propagate" checked>
-    </div>
-    <div id="data-generators"></div>
-    <div class="control" id="data-definition">
-        <label for="i-data-definition">Data</label>
-        <textarea name="data" id="i-data-definition"></textarea>
-    </div>
-    <input type="submit" value="Save Payload" class="button">
-</form>
+<p><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add App</button></p>
 
-<table>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="put-payload" class="form horizontal modal-content">
+            <div class="modal-header">
+                <a href="#!" type="button" class="close pull-right" data-dismiss="modal" aria-hidden="true">Close</a>
+                <h4 class="modal-title" id="myModalLabel">Add App</h4>
+            </div>
+            <div class="modal-body">
+                <div class="control">
+                    <label for="i-id">Identifier</label>
+                    <input type="text" name="id" id="i-id">
+                </div>
+                <div class="control">
+                    <label for="i-uri">URI</label>
+                    <input type="text" name="uri" id="i-uri">
+                </div>
+                <div class="control">
+                    <label for="i-share">Share</label>
+                    <input type="checkbox" name="share" id="i-share" checked>
+                </div>
+                <div class="control">
+                    <label for="i-propagate">Propagate</label>
+                    <input type="checkbox" name="propagate" id="i-propagate" checked>
+                </div>
+                <div id="data-generators"></div>
+                <div class="control" id="data-definition">
+                    <label for="i-data-definition">Data</label>
+                    <textarea name="data" id="i-data-definition"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" value="Save App" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+
+<table id="local_payloads-list">
     <thead>
     <tr>
         <th>Identifier</th>

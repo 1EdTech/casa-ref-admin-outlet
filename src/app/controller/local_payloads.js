@@ -10,6 +10,9 @@ App.Controller.LocalPayloads = {
 
         App.Controller.LocalPayloads._initDataGenerators();
 
+        $('#local_payloads-list').dataTable();
+        $('#myModal').modal('hide');
+
         $('a[data-app]').click(function(e){
           e.preventDefault();
           App.Controller.LocalPayloads.show(JSON.parse($(this).attr('data-app')));
@@ -17,6 +20,7 @@ App.Controller.LocalPayloads = {
 
         $('#put-payload').submit(function(e){
           e.preventDefault();
+          $('#myModal').modal('hide');
           App.Controller.LocalPayloads.store(
             $(this).find('[name="id"]').val(),
             JSON.parse($(this).find('[name="data"]').val())

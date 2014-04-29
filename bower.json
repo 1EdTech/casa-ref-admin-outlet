@@ -26,11 +26,13 @@
     "bower_components"
   ],
   "dependencies": {
+    "bootstrap-sass": "https://github.com/twbs/bootstrap-sass.git#3.1.1",
+    "DataTables": "https://github.com/DataTables/DataTables.git",
     "efx": "~0.2.4",
     "ejs_production": "http://embeddedjavascript.googlecode.com/files/ejs_1.0_developer.zip",
     "normalize-css": "~3.0.0",
     "WebBlocks-breakpoints": "WebBlocks/block-breakpoints",
-    "WebBlocks-wrapper-jquery": "https://github.com/WebBlocks/wrapper-jquery.git#2.1.0"
+    "WebBlocks-wrapper-jquery": "https://github.com/WebBlocks/wrapper-jquery.git#1.8.3"
   },
   "devDependencies": {
   }

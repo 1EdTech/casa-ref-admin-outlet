@@ -8,6 +8,10 @@ var App = {
         App.Controller[name].index();
       })
     })
+
+    $('.navbar-collapse a').click(function(){
+      $(this).closest('.navbar').find('.navbar-toggle').click();
+    });
   },
   Controller: {
 
