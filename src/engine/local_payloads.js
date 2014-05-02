@@ -1,7 +1,7 @@
 Engine.LocalPayloads = {
   all: function(options){
     Engine.Search.elasticsearch({
-      request: { "query": { "match_phrase": { "identity.originator_id": EngineConfig.id } } },
+      request: { "query": { "match_phrase": { "identity.originator_id": EngineConfig.id } },"size":99999 },
       success: function(data, textStatus, jqXHR){
         if(options.success) options.success(data);
       },

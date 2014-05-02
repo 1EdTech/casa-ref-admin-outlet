@@ -8,12 +8,12 @@ App.Controller.Attributes = {
 
         App.Page.render('attributes/index', {attributes: attributes});
 
-        $('#attributes-list').dataTable();
-
         $('a[data-attribute]').click(function(e){
           e.preventDefault();
           App.Controller.Attributes.show(JSON.parse($(this).attr('data-attribute')));
         })
+
+        $('#attributes-list').dataTable();
 
       }
 
