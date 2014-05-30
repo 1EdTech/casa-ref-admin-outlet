@@ -1,0 +1,59 @@
+<h2 style="margin-top:0">In Peers</h2>
+
+<% if(options && options.message){ %>
+<div class="alert<%= options.messageType ? (' alert-'+options.messageType) : ''%>">
+    <%= options.message %>
+</div>
+<% } %>
+
+<p><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Peer</button></p>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="put-peer" class="form horizontal modal-content">
+            <div class="modal-header">
+                <a href="#!" type="button" class="close pull-right" data-dismiss="modal" aria-hidden="true">Close</a>
+                <h4 class="modal-title" id="myModalLabel">Add Peer</h4>
+            </div>
+            <div class="modal-body">
+                <div class="control">
+                    <label for="i-name">Name</label>
+                    <input type="text" name="name" id="i-name">
+                </div>
+                <div class="control">
+                    <label for="i-uri">URI</label>
+                    <input type="text" name="uri" id="i-uri">
+                </div>
+                <div class="control">
+                    <label for="i-secret">Secret</label>
+                    <input type="text" name="secret" id="i-secret">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" value="Save Peer" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+
+<table id="peers-list">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>URI</th>
+        <th>Secret</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(var i in peers){
+        var peer = peers[i];
+    %>
+    <tr>
+        <td><a href="#" data-peer="<%= JSON.stringify(peer).replace(/"/g, '&quot;') %>"><%= peer.name %></a></td>
+        <td><%= peer.uri %></td>
+        <td><%= peer.secret %></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>

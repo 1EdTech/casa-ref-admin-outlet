@@ -1,0 +1,17 @@
+<form id="put-peer" class="form horizontal">
+    <div class="control">
+        <label for="i-name">Name</label>
+        <input type="text" name="name" id="i-name" value="<%= peer.name %>">
+    </div>
+    <div class="control">
+        <label for="i-uri">URI</label>
+        <input type="text" name="uri" id="i-uri" value="<%= peer.uri %>">
+    </div>
+    <div class="control">
+        <label for="i-secret">Secret</label>
+        <input type="text" name="secret" id="i-secret" value="<%= peer.secret %>">
+    </div>
+    <input type="submit" value="Update Peer" class="btn btn-primary">
+    <button id="destroy-peer" class="btn btn-danger">Delete Peer</button>
+    <button data-controller="InPeers" class="btn btn-default">Cancel</button>
+</form>
