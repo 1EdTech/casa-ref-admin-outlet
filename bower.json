@@ -33,7 +33,7 @@
     "normalize-css": "~3.0.0",
     "stash": "http://rezitech.github.io/stash/stash.js",
     "WebBlocks-breakpoints": "WebBlocks/block-breakpoints",
-    "WebBlocks-wrapper-jquery": "https://github.com/WebBlocks/wrapper-jquery.git#1.11.0"
+    "WebBlocks-wrapper-jquery": "https://github.com/WebBlocks/wrapper-jquery.git#2.1.0"
   },
   "devDependencies": {
   }
