@@ -112,9 +112,9 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
 
   block 'app', :path => 'app' do |app|
     block 'core' do
+      loose_dependency outlet.route 'config', 'app'
       dependency outlet.route 'core'
       dependency outlet.route 'engine'
-      dependency outlet.route 'config', 'app'
       dependency framework.route 'efx', 'driver'
       dependency framework.route 'ejs_production'
       dependency framework.route 'stash'
@@ -126,6 +126,7 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
       dependency framework.route 'DataTables'
       dependency framework.route 'bootstrap', 'js', 'modal'
       js_file 'attributes.js'
+      js_file 'in_peers.js'
       js_file 'auth.js'
       js_file 'local_payloads.js'
       js_file 'settings.js'
@@ -144,12 +145,16 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
   block 'engine', :path => 'engine' do |engine|
     block 'core' do
       dependency outlet.route 'core'
-      dependency outlet.route 'config', 'engine'
+      loose_dependency outlet.route 'config', 'engine'
       js_file 'core.js'
     end
     block 'attributes' do
       dependency engine.route 'core'
       js_file 'attributes.js'
+    end
+    block 'in_peers' do
+      dependency engine.route 'core'
+      js_file 'in_peers.js'
     end
     block 'local_payloads' do
       dependency engine.route 'core'

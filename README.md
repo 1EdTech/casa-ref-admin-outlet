@@ -14,3 +14,13 @@ the [CASA engine](https://github.com/IMSGlobal/casa-engine); however, it is not 
 
 This software is **open-source** and licensed under the Apache 2 license.
 The full text of the license may be found in the `LICENSE` file.
+
+## Build
+
+```
+bundle install
+```
+
+```
+bundle exec blocks build --include=casa-admin-outlet config app, casa-admin-outlet config engine
+```
