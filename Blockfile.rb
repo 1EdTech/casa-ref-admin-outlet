@@ -112,7 +112,7 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
 
   block 'app', :path => 'app' do |app|
     block 'core' do
-      loose_dependency outlet.route 'config', 'app'
+      dependency outlet.route 'config', 'app'
       dependency outlet.route 'core'
       dependency outlet.route 'engine'
       dependency framework.route 'efx', 'driver'
@@ -145,7 +145,7 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
   block 'engine', :path => 'engine' do |engine|
     block 'core' do
       dependency outlet.route 'core'
-      loose_dependency outlet.route 'config', 'engine'
+      dependency outlet.route 'config', 'engine'
       js_file 'core.js'
     end
     block 'attributes' do

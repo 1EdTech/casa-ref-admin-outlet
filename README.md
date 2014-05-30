@@ -22,5 +22,5 @@ bundle install
 ```
 
 ```
-bundle exec blocks build --include=casa-admin-outlet config app, casa-admin-outlet config engine
+bundle exec blocks build
 ```
