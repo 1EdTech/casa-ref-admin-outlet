@@ -22,5 +22,20 @@ bundle install
 ```
 
 ```
+npm install
+```
+
+```
+bower install
+```
+
+```
 bundle exec blocks build
 ```
+
+##Run
+```
+bundle exec rackup -p <port>
+```
+
+
