@@ -13,6 +13,7 @@ include 'casa-admin-outlet', 'attribute', 'author'
 include 'casa-admin-outlet', 'attribute', 'categories'
 include 'casa-admin-outlet', 'attribute', 'description'
 include 'casa-admin-outlet', 'attribute', 'explicit'
+include 'casa-admin-outlet', 'attribute', 'icon'
 include 'casa-admin-outlet', 'attribute', 'organization'
 include 'casa-admin-outlet', 'attribute', 'title'
 include 'casa-admin-outlet', 'attribute', 'tags'
@@ -95,6 +96,10 @@ block 'casa-admin-outlet', :path => 'src' do |outlet|
     block 'explicit' do
       dependency attribute.route 'abstract', 'boolean'
       js_file 'explicit.js'
+    end
+    block 'icon' do
+      dependency attribute.route 'abstract', 'string'
+      js_file 'icon.js'
     end
     block 'organization' do
       dependency attribute.route 'abstract', 'core'
