@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    casa-admin-outlet (0.0.01)
+    casa-admin-outlet (0.1.1)
       sinatra
 
 GEM
